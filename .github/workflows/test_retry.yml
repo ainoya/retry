@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 12
       - uses: ainoya/retry@master
-        name: ベータパッケージをスクラッチ組織にインストール
+        name: must-fail-job
         with:
           timeout_minutes: 10
           retry_wait_seconds: 15
