@@ -18,7 +18,7 @@ jobs:
         name: must-fail-job
         with:
           timeout_minutes: 10
-          retry_wait_seconds: 15
+          retry_wait_seconds: 3
           max_attempts: 5
           command: |
             exit 1
