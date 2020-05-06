@@ -57,7 +57,7 @@ async function runCmd() {
 async function runAction() {
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
-      info(`Waiting ${RETRY_WAIT_SECONDS} seconds...`)
+      warn(`Waiting ${RETRY_WAIT_SECONDS} seconds...`)
       await wait(ms.seconds(RETRY_WAIT_SECONDS));
       await runCmd();
       info(`Command completed after ${attempt} attempt(s).`);
