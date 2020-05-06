@@ -272,6 +272,13 @@ exports.setFailed = setFailed;
 // Logging Commands
 //-----------------------------------------------------------------------
 /**
+ * Gets whether Actions Step Debug is on or not
+ */
+function isDebug() {
+    return process.env['RUNNER_DEBUG'] === '1';
+}
+exports.isDebug = isDebug;
+/**
  * Writes debug message to user log
  * @param message debug message
  */
@@ -439,6 +446,8 @@ async function runCmd() {
 async function runAction() {
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
+      warn(`Waiting ${RETRY_WAIT_SECONDS} seconds...`);
+      await wait(ms.seconds(RETRY_WAIT_SECONDS));
       await runCmd();
       info(`Command completed after ${attempt} attempt(s).`);
       break;
